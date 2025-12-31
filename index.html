@@ -5,65 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Meet Your Future Self</title>
 
-<!-- =========================
-     STYLES (UNCHANGED FROM YOUR FILE)
-     ========================= -->
 <style>
-/* --- KEEPING YOUR FULL CSS AS-IS --- */
-/* (No changes made for safety & fidelity) */
+/* =====================
+   GLOBAL LOOK & FEEL
+===================== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(135deg, #eeeeee, #f4e6ef);
+  color: #4b3b4f;
+  overflow-x: hidden;
+}
 
-/* Your entire CSS block goes here exactly as provided */
-/* I am omitting it here for brevity in explanation, 
-   but in your real file KEEP IT EXACTLY AS YOU POSTED */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  animation: fadeUp 0.6s ease;
+}
+
+h2 {
+  color: #6a4c93;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  color: #8d6fa3;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+input[type="range"],
+input[type="date"] {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+button {
+  background: #d8b4e2;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+  background: #c79ad9;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   PROGRESS
+===================== */
+.progress-track {
+  background: #e4d7ec;
+  height: 10px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #c79ad9, #9f86c0);
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+/* =====================
+   INFO & LO BOXES
+===================== */
+.info-box {
+  background: #f7effb;
+  border-left: 4px solid #b392c7;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+/* =====================
+   MIND MAP
+===================== */
+.mindmap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.center-node {
+  grid-column: span 2;
+  background: #f2e9f7;
+  color: #5a3d6f;
+  padding: 1rem;
+  border-radius: 14px;
+  font-weight: bold;
+  text-align: center;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.node {
+  background: white;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border-left: 4px solid #d8b4e2;
+  animation: fadeUp 0.8s ease;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     BACKGROUND
-     ========================= -->
-<div class="hero-image active" id="heroImage1"></div>
-<div class="hero-image" id="heroImage2"></div>
-<div class="overlay"></div>
-
-<!-- =========================
-     APP CONTAINER
-     ========================= -->
 <div class="container">
-  <div class="content show" id="content">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
 
-    <div class="progress-bar">
-      <div class="progress-info">
-        <span class="progress-text" id="progressText"></span>
-        <span class="sparkle">✦</span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2 id="stageTitle"></h2>
-      <div class="subtitle" id="stageSubtitle"></div>
-      <div class="stage-content" id="stageContent"></div>
-      <div class="buttons" id="buttons"></div>
-    </div>
-
+  <div class="card">
+    <h2 id="stageTitle"></h2>
+    <div class="subtitle" id="stageSubtitle"></div>
+    <div id="stageContent"></div>
+    <div id="buttons"></div>
   </div>
 </div>
 
-<!-- =========================
-     SCRIPT
-     ========================= -->
 <script>
-/* -------------------------
-   STATE
--------------------------- */
 let currentStage = 0;
 
-let responses = JSON.parse(localStorage.getItem("futureSelfGr10")) || {
-  timeframe: "3",
+let responses = JSON.parse(localStorage.getItem("futureSelfLO")) || {
+  timeframe: 3,
   visualization: "",
   strengths: "",
   obstacles: "",
@@ -71,174 +173,154 @@ let responses = JSON.parse(localStorage.getItem("futureSelfGr10")) || {
   letterFromFuture: ""
 };
 
-/* -------------------------
-   STAGES
--------------------------- */
 const stages = [
 {
   title: "Meet Your Future Self",
-  subtitle: "Plan Your Path to Success",
+  subtitle: "Life Orientation | Self-awareness & Goal-setting",
   render: () => `
-    <p>This journey helps you reflect on who you are becoming and how you navigate the future.</p>
+    <p>This guided reflection supports Life Orientation outcomes:</p>
     <div class="info-box">
-      <p>• Take your time</p>
-      <p>• There are no right answers</p>
-      <p>• Your responses are private</p>
+      ✔ Self-awareness<br>
+      ✔ Personal responsibility<br>
+      ✔ Goal-setting & decision-making<br>
+      ✔ Meaningful life choices
     </div>
+    <p>Your responses are private and designed to support growth.</p>
   `
 },
 {
   title: "Your Timeline Ahead",
-  subtitle: "How far are we looking?",
+  subtitle: "LO: Goal-setting & future planning",
   render: () => `
     <input type="range" min="1" max="10" value="${responses.timeframe}"
       oninput="updateTimeframe(this.value)" />
-    <p style="text-align:center;font-size:2rem;margin-top:1rem;">
-      ${responses.timeframe} years
-    </p>
+    <p style="text-align:center;font-size:1.8rem;">${responses.timeframe} years</p>
   `
 },
 {
-  title: "Your Future Self",
-  subtitle: "Imagine your life",
+  title: "Future Vision",
+  subtitle: "LO: Self-concept & aspirations",
   render: () => `
-    <textarea placeholder="I see myself as..."
+    <textarea placeholder="Who are you becoming?"
       oninput="save('visualization', this.value)">${responses.visualization}</textarea>
   `
 },
 {
-  title: "Strengths & Supports",
-  subtitle: "What helped you succeed?",
+  title: "Strengths & Resources",
+  subtitle: "LO: Personal strengths & support systems",
   render: () => `
-    <textarea placeholder="My strengths are..."
+    <textarea placeholder="Skills, values, people, habits..."
       oninput="save('strengths', this.value)">${responses.strengths}</textarea>
   `
 },
 {
-  title: "Challenges Overcome",
-  subtitle: "What did you learn to handle?",
+  title: "Challenges & Growth",
+  subtitle: "LO: Coping skills & resilience",
   render: () => `
-    <textarea placeholder="Challenges I navigated..."
+    <textarea placeholder="What did you learn to manage?"
       oninput="save('obstacles', this.value)">${responses.obstacles}</textarea>
   `
 },
 {
-  title: "Letter to Your Future Self",
-  subtitle: "What do you want them to know?",
+  title: "Letter to the Future",
+  subtitle: "LO: Responsibility & motivation",
   render: () => `
     <textarea placeholder="Dear Future Me..."
       oninput="save('letterToFuture', this.value)">${responses.letterToFuture}</textarea>
   `
 },
 {
-  title: "Letter From Your Future Self",
-  subtitle: "Write back",
+  title: "Reply from the Future",
+  subtitle: "LO: Reflection & guidance",
   render: () => `
-    <textarea placeholder="Dear Past Me..."
+    <textarea placeholder="Advice from Future You..."
       oninput="save('letterFromFuture', this.value)">${responses.letterFromFuture}</textarea>
   `
 },
 {
-  title: "Your Journey",
-  subtitle: "Download your reflection",
+  title: "Your Integrated Future Map",
+  subtitle: "Reflection • Meaning • Completion",
   render: () => `
-    <button class="btn-download" onclick="download()">Download My Journey</button>
+    <div class="mindmap">
+      <div class="center-node">🌱 Future Me</div>
+      <div class="node"><strong>Vision</strong><br>${responses.visualization || "—"}</div>
+      <div class="node"><strong>Strengths</strong><br>${responses.strengths || "—"}</div>
+      <div class="node"><strong>Challenges</strong><br>${responses.obstacles || "—"}</div>
+      <div class="node"><strong>Guidance</strong><br>${responses.letterFromFuture || "—"}</div>
+    </div>
+
+    <div class="info-box">
+      <strong>Personal Reflection Insight</strong><br>
+      Enter your date of birth for a reflective prompt.
+      <input type="date" onchange="generateInsight(this.value)" />
+      <div id="insightBox"></div>
+    </div>
+
+    <button onclick="download()">Download My Journey</button>
   `
 }
 ];
 
-/* -------------------------
-   RENDER
--------------------------- */
 function render() {
   const stage = stages[currentStage];
   document.getElementById("stageTitle").innerText = stage.title;
   document.getElementById("stageSubtitle").innerText = stage.subtitle;
   document.getElementById("stageContent").innerHTML = stage.render();
-
-  document.getElementById("progressText").innerText =
-    `Step ${currentStage + 1} of ${stages.length}`;
-
   document.getElementById("progressFill").style.width =
     `${((currentStage + 1) / stages.length) * 100}%`;
-
   renderButtons();
 }
 
 function renderButtons() {
-  const btns = [];
-  if (currentStage > 0) {
-    btns.push(`<button class="btn-back" onclick="prev()">Back</button>`);
-  }
-  if (currentStage < stages.length - 1) {
-    btns.push(`<button class="btn-continue" onclick="next()">Continue</button>`);
-  }
-  document.getElementById("buttons").innerHTML = btns.join("");
+  let html = "";
+  if (currentStage > 0) html += `<button onclick="prev()">Back</button>`;
+  if (currentStage < stages.length - 1) html += `<button onclick="next()">Continue</button>`;
+  document.getElementById("buttons").innerHTML = html;
 }
 
-/* -------------------------
-   NAVIGATION
--------------------------- */
-function next() {
-  if (currentStage < stages.length - 1) {
-    currentStage++;
-    render();
-  }
-}
+function next() { currentStage++; render(); }
+function prev() { currentStage--; render(); }
 
-function prev() {
-  if (currentStage > 0) {
-    currentStage--;
-    render();
-  }
-}
-
-/* -------------------------
-   SAVE + DOWNLOAD
--------------------------- */
 function save(key, value) {
   responses[key] = value;
-  localStorage.setItem("futureSelfGr10", JSON.stringify(responses));
+  localStorage.setItem("futureSelfLO", JSON.stringify(responses));
 }
 
 function updateTimeframe(val) {
-  responses.timeframe = val;
   save("timeframe", val);
   render();
 }
 
+function generateInsight(dateStr) {
+  if (!dateStr) return;
+  const digits = dateStr.replaceAll("-", "").split("");
+  const num = digits.reduce((a,b)=>a+parseInt(b),0) % 9 || 9;
+  const insights = {
+    1:"Initiative and leadership often matter to you.",
+    2:"You value connection and cooperation.",
+    3:"Creativity and communication may be strengths.",
+    4:"You often appreciate structure and reliability.",
+    5:"Adaptability and curiosity guide you.",
+    6:"Care and responsibility are important to you.",
+    7:"Reflection and depth support your growth.",
+    8:"Achievement and impact motivate you.",
+    9:"Meaning and contribution matter deeply."
+  };
+  document.getElementById("insightBox").innerHTML =
+    `<p><strong>Your reflection number:</strong> ${num}</p><p>${insights[num]}</p>`;
+}
+
 function download() {
-  const text = `
-YOUR FUTURE SELF (${responses.timeframe} YEARS)
-
-VISION:
-${responses.visualization}
-
-STRENGTHS:
-${responses.strengths}
-
-CHALLENGES:
-${responses.obstacles}
-
-LETTER TO FUTURE SELF:
-${responses.letterToFuture}
-
-LETTER FROM FUTURE SELF:
-${responses.letterFromFuture}
-  `;
-  const blob = new Blob([text], { type: "text/plain" });
+  const text = JSON.stringify(responses, null, 2);
+  const blob = new Blob([text], {type:"text/plain"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "My_Future_Self.txt";
+  a.download = "My_Future_Self_Journey.txt";
   a.click();
 }
 
-/* -------------------------
-   INIT
--------------------------- */
 render();
 </script>
 
 </body>
-
 </html>
