@@ -6,17 +6,13 @@
 <title>Meet Your Future Self</title>
 
 <style>
-/* =====================
-   GLOBAL LOOK & FEEL
-===================== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&family=Crimson+Text:ital@0;1&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #eeeeee, #f4e6ef);
   color: #4b3b4f;
-  overflow-x: hidden;
 }
 
 .container {
@@ -26,27 +22,25 @@ body {
 }
 
 .card {
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.95);
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 1.8rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   animation: fadeUp 0.6s ease;
 }
 
 h2 {
+  font-family: 'Playfair Display', serif;
   color: #6a4c93;
   margin-bottom: 0.2rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
   font-size: 2rem;
 }
 
 .subtitle {
-  color: #8d6fa3;
-  margin-bottom: 1rem;
   font-family: 'Crimson Text', serif;
   font-style: italic;
-  font-size: 1.1rem;
+  color: #8d6fa3;
+  margin-bottom: 1rem;
 }
 
 textarea {
@@ -55,28 +49,13 @@ textarea {
   border-radius: 12px;
   border: 2px solid #e4d7ec;
   padding: 0.8rem;
-  font-size: 1.05rem;
+  font-size: 1rem;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  line-height: 1.6;
 }
 
 textarea:focus {
   outline: none;
   border-color: #9f86c0;
-  box-shadow: 0 0 0 3px rgba(159, 134, 192, 0.1);
-}
-
-textarea::placeholder {
-  color: #b8a5c7;
-  font-style: italic;
-}
-
-input[type="range"],
-input[type="date"] {
-  width: 100%;
-  margin-top: 1rem;
 }
 
 button {
@@ -87,25 +66,12 @@ button {
   font-size: 1rem;
   margin: 0.5rem;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(216, 180, 226, 0.3);
 }
 
 button:hover {
   background: #c79ad9;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(199, 154, 217, 0.4);
 }
 
-button:active {
-  transform: translateY(0);
-}
-
-/* =====================
-   PROGRESS
-===================== */
 .progress-track {
   background: #e4d7ec;
   height: 10px;
@@ -121,82 +87,35 @@ button:active {
   transition: width 0.4s ease;
 }
 
-/* =====================
-   INFO & LO BOXES
-===================== */
 .info-box {
   background: #f7effb;
   border-left: 4px solid #b392c7;
   padding: 0.8rem;
   border-radius: 10px;
   margin: 1rem 0;
-  font-size: 0.95rem;
 }
 
-/* =====================
-   TIMELINE VISUALIZATION
-===================== */
-.timeline-viz {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
-  position: relative;
+.inspiration-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 1.5rem 0;
 }
 
-.timeline-point {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #d8b4e2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-.timeline-point.active {
-  background: #6a4c93;
-  transform: scale(1.2);
-  box-shadow: 0 0 20px rgba(106, 76, 147, 0.4);
-}
-
-.timeline-line {
-  position: absolute;
-  height: 4px;
-  background: linear-gradient(90deg, #d8b4e2, #9f86c0);
-  top: 50%;
-  left: 30px;
-  right: 30px;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-
-/* =====================
-   MIND MAP
-===================== */
 .mindmap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
 .center-node {
   grid-column: span 2;
   background: linear-gradient(135deg, #f2e9f7, #e8d8f0);
-  color: #5a3d6f;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 14px;
-  font-weight: bold;
   text-align: center;
-  font-size: 1.3rem;
-  animation: pulse 2s infinite alternate;
-  box-shadow: 0 4px 15px rgba(106, 76, 147, 0.2);
+  font-weight: bold;
 }
 
 .node {
@@ -204,90 +123,13 @@ button:active {
   padding: 1rem;
   border-radius: 12px;
   border-left: 4px solid #d8b4e2;
-  animation: fadeUp 0.8s ease;
-  transition: all 0.3s ease;
-  min-height: 80px;
 }
 
-.node:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  border-left-color: #6a4c93;
-}
-
-.node strong {
-  color: #6a4c93;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-/* =====================
-   INSIGHT BOX ENHANCED
-===================== */
-#insightBox {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: white;
-  border-radius: 10px;
-  animation: slideIn 0.5s ease;
-}
-
-#insightBox.show {
-  display: block;
-}
-
-.life-path-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #6a4c93, #9f86c0);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* =====================
-   INSPIRATIONAL IMAGES
-===================== */
-.inspiration-image {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 16px;
-  margin: 1.5rem 0;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  animation: fadeUp 1s ease;
-}
-
-.quote-overlay {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-  padding: 2rem;
-  border-radius: 16px;
-  margin: 1.5rem 0;
-  color: white;
-  text-align: center;
-  font-family: 'Crimson Text', serif;
-  font-size: 1.3rem;
-  font-style: italic;
-  line-height: 1.8;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-
-/* =====================
-   EMAIL MODAL
-===================== */
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.5);
-  animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
@@ -296,88 +138,11 @@ button:active {
   padding: 2rem;
   border-radius: 20px;
   max-width: 500px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  animation: slideIn 0.3s ease;
 }
 
-.modal-content h3 {
-  font-family: 'Playfair Display', serif;
-  color: #6a4c93;
-  margin-top: 0;
-}
-
-.modal-content input[type="email"] {
-  width: 100%;
-  padding: 0.8rem;
-  border: 2px solid #e4d7ec;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-  margin: 1rem 0;
-  box-sizing: border-box;
-}
-
-.modal-content input[type="email"]:focus {
-  outline: none;
-  border-color: #9f86c0;
-}
-
-.close-modal {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  line-height: 20px;
-}
-
-.close-modal:hover {
-  color: #6a4c93;
-}
-
-/* =====================
-   ANIMATIONS
-===================== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  from { transform: scale(1); }
-  to { transform: scale(1.02); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* =====================
-   ACCESSIBILITY
-===================== */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 </style>
 </head>
@@ -385,7 +150,7 @@ button:active {
 <body>
 
 <div class="container">
-  <div class="progress-track" role="progressbar" aria-label="Journey progress">
+  <div class="progress-track">
     <div class="progress-fill" id="progressFill"></div>
   </div>
 
@@ -397,17 +162,12 @@ button:active {
   </div>
 </div>
 
-<!-- Email Modal -->
 <div id="emailModal" class="modal">
   <div class="modal-content">
-    <span class="close-modal" onclick="closeEmailModal()">&times;</span>
-    <h3>📧 Email Your Journey</h3>
-    <p>Enter your email address to receive your Future Self reflection:</p>
-    <input type="email" id="emailInput" placeholder="your.email@example.com" />
-    <div style="text-align: center; margin-top: 1rem;">
-      <button onclick="sendEmail()">Send to Email</button>
-      <button onclick="closeEmailModal()" style="background: #e4d7ec;">Cancel</button>
-    </div>
+    <h3>Email Your Journey</h3>
+    <input type="email" id="emailInput" placeholder="you@example.com" />
+    <button onclick="sendEmail()">Send</button>
+    <button onclick="closeEmailModal()">Cancel</button>
   </div>
 </div>
 
@@ -426,169 +186,77 @@ let responses = JSON.parse(localStorage.getItem("futureSelfLO")) || {
 const stages = [
 {
   title: "Meet Your Future Self",
-  subtitle: "Life Orientation | Self-awareness & Goal-setting",
+  subtitle: "Life Orientation | Self-awareness",
   render: () => `
-    <img src="https://i.postimg.cc/Kz0j7bLX/beach-sunset-freedom.jpg" 
-         alt="Person on beach at sunset" 
-         class="inspiration-image"
-         onerror="this.style.display='none'" />
-    
-    <div class="quote-overlay">
-      "There is peace in realizing that what God intends for you will happen in the right way."
-      <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.9;">— Sarah Ghabrial</div>
-    </div>
-    
-    <p style="font-size: 1.1rem; line-height: 1.7;">This guided reflection supports Life Orientation outcomes:</p>
-    <div class="info-box">
-      ✔ Self-awareness<br>
-      ✔ Personal responsibility<br>
-      ✔ Goal-setting & decision-making<br>
-      ✔ Meaningful life choices
-    </div>
-    <p style="color: #8d6fa3; font-style: italic;">Your responses are private and designed to support growth.</p>
+    <img class="inspiration-image"
+      src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80"
+      onerror="this.style.display='none'">
+    <p>This activity helps you reflect on your future goals and choices.</p>
   `
 },
 {
-  title: "Your Timeline Ahead",
-  subtitle: "LO: Goal-setting & future planning",
+  title: "Your Timeline",
+  subtitle: "Goal-setting",
   render: () => `
-    <div class="timeline-viz">
-      <div class="timeline-line"></div>
-      <div class="timeline-point active">Now</div>
-      <div class="timeline-point" style="opacity: ${responses.timeframe >= 3 ? 1 : 0.3}">
-        ${Math.floor(responses.timeframe/2)}y
-      </div>
-      <div class="timeline-point" style="opacity: ${responses.timeframe >= 5 ? 1 : 0.3}">
-        ${responses.timeframe}y
-      </div>
-    </div>
-    <label for="timeframeSlider" class="visually-hidden">Select timeframe in years</label>
-    <input id="timeframeSlider" type="range" min="1" max="10" value="${responses.timeframe}"
-      oninput="updateTimeframe(this.value)" 
-      aria-label="Timeline slider" />
-    <p style="text-align:center;font-size:1.8rem;font-weight:bold;color:#6a4c93;">
-      ${responses.timeframe} years
-    </p>
-    <p style="text-align:center;color:#8d6fa3;">
-      Imagine yourself in ${responses.timeframe} years. What has changed?
-    </p>
+    <input type="range" min="1" max="10" value="${responses.timeframe}"
+      oninput="updateTimeframe(this.value)">
+    <p><strong>${responses.timeframe} years ahead</strong></p>
   `
 },
 {
   title: "Future Vision",
-  subtitle: "LO: Self-concept & aspirations",
+  subtitle: "Self-concept",
   render: () => `
-    <p>Imagine yourself ${responses.timeframe} years from now. Describe who you've become:</p>
-    <textarea placeholder="Example: I'm studying engineering at university, volunteering weekly, and have developed strong leadership skills..."
-      oninput="save('visualization', this.value)"
-      aria-label="Future vision">${responses.visualization}</textarea>
-    <div class="info-box" style="margin-top:1rem;">
-      💡 Consider: Career, relationships, personal growth, achievements, values
-    </div>
+    <textarea oninput="save('visualization', this.value)"
+      placeholder="Describe your future...">${responses.visualization}</textarea>
   `
 },
 {
-  title: "Strengths & Resources",
-  subtitle: "LO: Personal strengths & support systems",
+  title: "Strengths",
+  subtitle: "Personal resources",
   render: () => `
-    <p>What strengths and resources helped you get there?</p>
-    <textarea placeholder="Example: My determination, support from family, time management skills, mentorship from teachers..."
-      oninput="save('strengths', this.value)"
-      aria-label="Strengths and resources">${responses.strengths}</textarea>
-    <div class="info-box" style="margin-top:1rem;">
-      💡 Think about: Skills, values, people who support you, habits, opportunities
-    </div>
+    <textarea oninput="save('strengths', this.value)"
+      placeholder="What strengths helped you?">${responses.strengths}</textarea>
   `
 },
 {
-  title: "Challenges & Growth",
-  subtitle: "LO: Coping skills & resilience",
+  title: "Challenges",
+  subtitle: "Resilience",
   render: () => `
-    <p>What challenges did you face, and how did you overcome them?</p>
-    <textarea placeholder="Example: I struggled with exam anxiety but learned breathing techniques and developed better study habits..."
-      oninput="save('obstacles', this.value)"
-      aria-label="Challenges overcome">${responses.obstacles}</textarea>
-    <div class="info-box" style="margin-top:1rem;">
-      💡 Reflect on: Obstacles, setbacks, lessons learned, personal growth
-    </div>
+    <textarea oninput="save('obstacles', this.value)"
+      placeholder="What challenges did you overcome?">${responses.obstacles}</textarea>
   `
 },
 {
-  title: "Letter to the Future",
-  subtitle: "LO: Responsibility & motivation",
+  title: "Letter to Future Self",
+  subtitle: "Responsibility",
   render: () => `
-    <img src="https://i.postimg.cc/8zBGn6fh/mountain-silhouette.jpg" 
-         alt="Person standing on mountain peak" 
-         class="inspiration-image"
-         onerror="this.style.display='none'" />
-    
-    <p style="font-size: 1.05rem;">Write a letter to your future self. What do you want to tell them?</p>
-    <textarea placeholder="Dear Future Me,
-
-I hope you're proud of how far you've come..."
-      oninput="save('letterToFuture', this.value)"
-      aria-label="Letter to future self">${responses.letterToFuture}</textarea>
+    <textarea oninput="save('letterToFuture', this.value)"
+      placeholder="Dear Future Me...">${responses.letterToFuture}</textarea>
   `
 },
 {
   title: "Reply from the Future",
-  subtitle: "LO: Reflection & guidance",
+  subtitle: "Reflection",
   render: () => `
-    <img src="https://i.postimg.cc/7P6cWGhN/older-younger-conversation.jpg" 
-         alt="Older and younger person in conversation" 
-         class="inspiration-image"
-         onerror="this.style.display='none'" />
-    
-    <p style="font-size: 1.05rem;">Now imagine your future self writes back. What advice do they offer?</p>
-    <textarea placeholder="Dear Past Me,
-
-Thank you for believing in me. Here's what I've learned..."
-      oninput="save('letterFromFuture', this.value)"
-      aria-label="Reply from future self">${responses.letterFromFuture}</textarea>
+    <textarea oninput="save('letterFromFuture', this.value)"
+      placeholder="Dear Past Me...">${responses.letterFromFuture}</textarea>
   `
 },
 {
-  title: "Your Integrated Future Map",
-  subtitle: "Reflection • Meaning • Completion",
+  title: "Your Future Map",
+  subtitle: "Integration",
   render: () => `
-    <img src="https://i.postimg.cc/J4NRHxDy/crescent-moon-magic.jpg" 
-         alt="Magical crescent moon with stars" 
-         class="inspiration-image"
-         onerror="this.style.display='none'" />
-    
     <div class="mindmap">
-      <div class="center-node">🌟 Future Me in ${responses.timeframe} Years</div>
-      <div class="node">
-        <strong>🎯 Vision</strong>
-        ${responses.visualization || "Complete your vision to see it here"}
-      </div>
-      <div class="node">
-        <strong>💪 Strengths</strong>
-        ${responses.strengths || "Complete your strengths to see them here"}
-      </div>
-      <div class="node">
-        <strong>🌱 Growth</strong>
-        ${responses.obstacles || "Complete your challenges to see them here"}
-      </div>
-      <div class="node">
-        <strong>💡 Guidance</strong>
-        ${responses.letterFromFuture || "Complete your letter to see it here"}
-      </div>
+      <div class="center-node">Future Me</div>
+      <div class="node"><strong>Vision</strong><br>${responses.visualization}</div>
+      <div class="node"><strong>Strengths</strong><br>${responses.strengths}</div>
+      <div class="node"><strong>Growth</strong><br>${responses.obstacles}</div>
+      <div class="node"><strong>Guidance</strong><br>${responses.letterFromFuture}</div>
     </div>
 
-    <div class="info-box" style="margin-top:2rem;">
-      <strong>✨ Personal Reflection Insight</strong><br>
-      Enter your date of birth for a personalized reflection based on numerology principles.
-      <label for="dobInput" class="visually-hidden">Date of birth</label>
-      <input id="dobInput" type="date" onchange="generateInsight(this.value)" aria-label="Date of birth" />
-      <div id="insightBox"></div>
-    </div>
-
-    <div style="text-align:center;margin-top:2rem;">
-      <button onclick="downloadJourney()">📥 Download My Journey</button>
-      <button onclick="openEmailModal()">📧 Email My Journey</button>
-      <button onclick="reset()" style="background: #e4d7ec;">🔄 Start Fresh</button>
-    </div>
+    <button onclick="downloadJourney()">Download</button>
+    <button onclick="openEmailModal()">Email</button>
   `
 }
 ];
@@ -599,290 +267,47 @@ function render() {
   document.getElementById("stageSubtitle").innerText = stage.subtitle;
   document.getElementById("stageContent").innerHTML = stage.render();
   document.getElementById("progressFill").style.width =
-    `${((currentStage + 1) / stages.length) * 100}%`;
+    ((currentStage + 1) / stages.length) * 100 + "%";
   renderButtons();
 }
 
 function renderButtons() {
   let html = "";
-  if (currentStage > 0) html += `<button onclick="prev()">⬅ Back</button>`;
-  if (currentStage < stages.length - 1) html += `<button onclick="next()">Continue ➡</button>`;
+  if (currentStage > 0) html += `<button onclick="prev()">Back</button>`;
+  if (currentStage < stages.length - 1) html += `<button onclick="next()">Continue</button>`;
   document.getElementById("buttons").innerHTML = html;
 }
 
-function next() { 
-  currentStage++; 
-  render();
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-function prev() { 
-  currentStage--; 
-  render();
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
+function next() { currentStage++; render(); }
+function prev() { currentStage--; render(); }
 
 function save(key, value) {
   responses[key] = value;
   localStorage.setItem("futureSelfLO", JSON.stringify(responses));
 }
 
-function updateTimeframe(val) {
-  save("timeframe", val);
-  render();
-}
-
-function generateInsight(dateStr) {
-  if (!dateStr) return;
-  
-  // Calculate Life Path Number (proper numerology calculation)
-  const digits = dateStr.replaceAll("-", "").split("").map(Number);
-  let sum = digits.reduce((a, b) => a + b, 0);
-  
-  // Reduce to single digit, keeping master numbers 11, 22, 33
-  while (sum > 9 && ![11, 22, 33].includes(sum)) {
-    sum = sum.toString().split("").reduce((a, b) => a + parseInt(b), 0);
-  }
-  
-  const lifePaths = {
-    1: {
-      trait: "Initiative and Leadership",
-      strength: "You're a natural leader who takes initiative",
-      careers: "Entrepreneurship, Engineering, Management, Mathematics",
-      lo: "Your strength in personal responsibility and decision-making serves you well"
-    },
-    2: {
-      trait: "Cooperation and Harmony",
-      strength: "You value connection and work well with others",
-      careers: "Teaching, Counselling, Social Work, Human Resources",
-      lo: "Your ability to build relationships supports collaborative success"
-    },
-    3: {
-      trait: "Creativity and Expression",
-      strength: "Creativity and communication are your gifts",
-      careers: "Media, Arts, Marketing, Communications, Writing",
-      lo: "Your self-expression helps you connect authentically with your goals"
-    },
-    4: {
-      trait: "Structure and Reliability",
-      strength: "You appreciate structure and build solid foundations",
-      careers: "Accounting, Engineering, Project Management, Architecture",
-      lo: "Your discipline and planning create sustainable pathways to success"
-    },
-    5: {
-      trait: "Adaptability and Curiosity",
-      strength: "Adaptability and curiosity guide your exploration",
-      careers: "Tourism, Sales, Journalism, Event Management",
-      lo: "Your flexibility helps you navigate change and seize opportunities"
-    },
-    6: {
-      trait: "Care and Responsibility",
-      strength: "Care and responsibility are central to who you are",
-      careers: "Healthcare, Social Work, Teaching, Community Development",
-      lo: "Your nurturing nature supports both your growth and others'"
-    },
-    7: {
-      trait: "Reflection and Depth",
-      strength: "Reflection and depth support your understanding",
-      careers: "Research, IT, Psychology, Analytics, Science",
-      lo: "Your thoughtful approach leads to meaningful insights and wisdom"
-    },
-    8: {
-      trait: "Achievement and Impact",
-      strength: "Achievement and creating impact motivate you",
-      careers: "Business, Law, Finance, Leadership roles",
-      lo: "Your ambition drives you toward significant accomplishments"
-    },
-    9: {
-      trait: "Meaning and Contribution",
-      strength: "Meaning and contribution matter deeply to you",
-      careers: "NGO work, Environmental science, Activism, Education",
-      lo: "Your desire to make a difference guides purposeful choices"
-    },
-    11: {
-      trait: "Vision and Inspiration (Master Number)",
-      strength: "You have heightened intuition and visionary potential",
-      careers: "Innovation, Leadership, Inspirational roles, Technology",
-      lo: "Your insight can inspire others and lead transformative change"
-    },
-    22: {
-      trait: "Master Builder (Master Number)",
-      strength: "You have the potential to build lasting legacies",
-      careers: "Architecture, Policy-making, Large-scale projects, Urban planning",
-      lo: "Your ability to turn vision into reality creates meaningful impact"
-    },
-    33: {
-      trait: "Master Teacher (Master Number)",
-      strength: "You have exceptional capacity for nurturing and teaching",
-      careers: "Education reform, Counselling, Humanitarian work",
-      lo: "Your gift for uplifting others creates ripples of positive change"
-    }
-  };
-  
-  const path = lifePaths[sum];
-  const masterNote = [11, 22, 33].includes(sum) ? 
-    '<p style="color:#6a4c93;font-weight:bold;">✨ You have a Master Number - this suggests heightened potential and responsibility.</p>' : '';
-  
-  document.getElementById("insightBox").innerHTML = `
-    <div style="animation: slideIn 0.5s ease;">
-      <div class="life-path-badge">Life Path ${sum}</div>
-      ${masterNote}
-      <p><strong>${path.trait}</strong></p>
-      <p>${path.strength}</p>
-      <p><strong>Aligned Career Paths:</strong> ${path.careers}</p>
-      <p><strong>LO Connection:</strong> ${path.lo}</p>
-      <p style="margin-top:1rem;padding:0.8rem;background:#f2e9f7;border-radius:8px;">
-        <strong>Reflection:</strong> How does this resonate with your future vision above? 
-        What aspects feel true to you?
-      </p>
-    </div>
-  `;
-}
+function updateTimeframe(v) { save("timeframe", v); render(); }
 
 function downloadJourney() {
-  const formattedText = `
-═══════════════════════════════════════════════════════
-        MY FUTURE SELF JOURNEY
-        Life Orientation Reflection
-═══════════════════════════════════════════════════════
-
-Date: ${new Date().toLocaleDateString('en-ZA', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  })}
-
-───────────────────────────────────────────────────────
-TIMELINE: ${responses.timeframe} Years Ahead
-───────────────────────────────────────────────────────
-
-───────────────────────────────────────────────────────
-🎯 FUTURE VISION
-───────────────────────────────────────────────────────
-${responses.visualization || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-💪 STRENGTHS & RESOURCES
-───────────────────────────────────────────────────────
-${responses.strengths || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-🌱 CHALLENGES & GROWTH
-───────────────────────────────────────────────────────
-${responses.obstacles || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-✉️ LETTER TO MY FUTURE SELF
-───────────────────────────────────────────────────────
-${responses.letterToFuture || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-💌 REPLY FROM MY FUTURE SELF
-───────────────────────────────────────────────────────
-${responses.letterFromFuture || "(Not completed)"}
-
-═══════════════════════════════════════════════════════
-
-This reflection was created using the Future Self Intervention
-tool for Life Orientation (Grades 10-12)
-
-"There is peace in realizing that what God intends for you 
-will happen in the right way." — Sarah Ghabrial
-
-═══════════════════════════════════════════════════════
-  `.trim();
-  
-  const blob = new Blob([formattedText], {type:"text/plain;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
+  const text = JSON.stringify(responses, null, 2);
+  const blob = new Blob([text], {type:"text/plain"});
   const a = document.createElement("a");
-  a.href = url;
-  a.download = `Future_Self_Journey_${new Date().toISOString().split('T')[0]}.txt`;
-  document.body.appendChild(a);
+  a.href = URL.createObjectURL(blob);
+  a.download = "Future_Self_Journey.txt";
   a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  
-  alert("✅ Your journey has been downloaded!");
 }
 
 function openEmailModal() {
   document.getElementById("emailModal").style.display = "block";
 }
-
 function closeEmailModal() {
   document.getElementById("emailModal").style.display = "none";
 }
-
 function sendEmail() {
   const email = document.getElementById("emailInput").value;
-  
-  if (!email || !email.includes('@')) {
-    alert("⚠️ Please enter a valid email address.");
-    return;
-  }
-  
-  const subject = encodeURIComponent("My Future Self Journey - Life Orientation Reflection");
-  const body = encodeURIComponent(`
-MY FUTURE SELF JOURNEY
-Life Orientation Reflection
-Date: ${new Date().toLocaleDateString()}
-
-═══════════════════════════════════════════════════════
-
-TIMELINE: ${responses.timeframe} Years Ahead
-
-───────────────────────────────────────────────────────
-🎯 FUTURE VISION
-───────────────────────────────────────────────────────
-${responses.visualization || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-💪 STRENGTHS & RESOURCES
-───────────────────────────────────────────────────────
-${responses.strengths || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-🌱 CHALLENGES & GROWTH
-───────────────────────────────────────────────────────
-${responses.obstacles || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-✉️ LETTER TO MY FUTURE SELF
-───────────────────────────────────────────────────────
-${responses.letterToFuture || "(Not completed)"}
-
-───────────────────────────────────────────────────────
-💌 REPLY FROM MY FUTURE SELF
-───────────────────────────────────────────────────────
-${responses.letterFromFuture || "(Not completed)"}
-
-═══════════════════════════════════════════════════════
-
-"There is peace in realizing that what God intends for you will happen in the right way." 
-— Sarah Ghabrial
-  `);
-  
-  // Open default email client
-  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-  
+  if (!email.includes("@")) { alert("Enter valid email"); return; }
+  window.location.href = `mailto:${email}?subject=My Future Self Journey`;
   closeEmailModal();
-  alert("✅ Opening your email client...\n\nIf it doesn't open automatically, you can copy your journey using the Download button instead.");
-}
-
-function reset() {
-  if (confirm("Are you sure you want to start fresh? This will clear all your responses.")) {
-    localStorage.removeItem("futureSelfLO");
-    responses = {
-      timeframe: 3,
-      visualization: "",
-      strengths: "",
-      obstacles: "",
-      letterToFuture: "",
-      letterFromFuture: ""
-    };
-    currentStage = 0;
-    render();
-  }
 }
 
 render();
