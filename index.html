@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meet Your Future Self</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&family=Crimson+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #eeeeee, #f4e6ef);
   color: #4b3b4f;
+  overflow-x: hidden;
 }
 
 .container {
@@ -22,25 +22,71 @@ body {
 }
 
 .card {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.92);
   border-radius: 20px;
-  padding: 1.8rem;
+  padding: 2.5rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   animation: fadeUp 0.6s ease;
 }
 
 h2 {
-  font-family: 'Playfair Display', serif;
   color: #6a4c93;
-  margin-bottom: 0.2rem;
-  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .subtitle {
+  color: #8d6fa3;
+  margin-bottom: 1.5rem;
   font-family: 'Crimson Text', serif;
   font-style: italic;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #5a3d6f;
+  margin: 1.5rem 0;
+}
+
+.intro-text em {
+  font-style: italic;
   color: #8d6fa3;
+}
+
+.inspiration-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  animation: fadeUp 1s ease;
+}
+
+.section-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #6a4c93;
+  margin-top: 2rem;
   margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.elegant-prompt {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #6a4c93;
+  margin-bottom: 1rem;
+  line-height: 1.7;
 }
 
 textarea {
@@ -48,28 +94,49 @@ textarea {
   min-height: 120px;
   border-radius: 12px;
   border: 2px solid #e4d7ec;
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 1rem;
+  font-size: 1.05rem;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  line-height: 1.7;
 }
 
 textarea:focus {
   outline: none;
   border-color: #9f86c0;
+  box-shadow: 0 0 0 3px rgba(159, 134, 192, 0.1);
+}
+
+textarea::placeholder {
+  color: #b8a5c7;
+  font-style: italic;
+}
+
+input[type="range"],
+input[type="date"] {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 button {
   background: #d8b4e2;
   border: none;
   border-radius: 20px;
-  padding: 0.7rem 1.6rem;
-  font-size: 1rem;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.05rem;
   margin: 0.5rem;
   cursor: pointer;
+  transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(216, 180, 226, 0.3);
 }
 
 button:hover {
   background: #c79ad9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(199, 154, 217, 0.4);
 }
 
 .progress-track {
@@ -90,63 +157,232 @@ button:hover {
 .info-box {
   background: #f7effb;
   border-left: 4px solid #b392c7;
-  padding: 0.8rem;
+  padding: 1.2rem;
   border-radius: 10px;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
-.inspiration-image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 16px;
+.info-box strong {
+  color: #6a4c93;
+  font-weight: 600;
+}
+
+.research-note {
+  background: linear-gradient(135deg, rgba(106, 76, 147, 0.08), rgba(159, 134, 192, 0.08));
+  border-left: 4px solid #9f86c0;
+  padding: 1.2rem;
+  border-radius: 10px;
   margin: 1.5rem 0;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.research-note strong {
+  font-style: normal;
+  color: #6a4c93;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.timeline-viz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+.timeline-point {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #d8b4e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-point.active {
+  background: #6a4c93;
+  transform: scale(1.25);
+  box-shadow: 0 0 25px rgba(106, 76, 147, 0.5);
+}
+
+.timeline-line {
+  position: absolute;
+  height: 4px;
+  background: linear-gradient(90deg, #d8b4e2, #9f86c0);
+  top: 50%;
+  left: 35px;
+  right: 35px;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
 .mindmap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.2rem;
+  margin-top: 2rem;
 }
 
 .center-node {
   grid-column: span 2;
   background: linear-gradient(135deg, #f2e9f7, #e8d8f0);
-  padding: 1.2rem;
-  border-radius: 14px;
+  color: #5a3d6f;
+  padding: 2rem;
+  border-radius: 16px;
+  font-weight: 700;
   text-align: center;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  animation: pulse 2s infinite alternate;
+  box-shadow: 0 6px 20px rgba(106, 76, 147, 0.2);
 }
 
 .node {
   background: white;
-  padding: 1rem;
+  padding: 1.3rem;
+  border-radius: 14px;
+  border-left: 5px solid #d8b4e2;
+  animation: fadeUp 0.8s ease;
+  transition: all 0.3s ease;
+  min-height: 100px;
+}
+
+.node:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  border-left-color: #6a4c93;
+}
+
+.node strong {
+  color: #6a4c93;
+  display: block;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+#insightBox {
+  margin-top: 1.5rem;
+  padding: 1.3rem;
+  background: white;
   border-radius: 12px;
-  border-left: 4px solid #d8b4e2;
+  animation: slideIn 0.5s ease;
+}
+
+.life-path-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #6a4c93, #9f86c0);
+  color: white;
+  padding: 0.6rem 1.3rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0.7rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.quote-overlay {
+  background: linear-gradient(135deg, rgba(106, 76, 147, 0.88), rgba(159, 134, 192, 0.78));
+  padding: 2.5rem;
+  border-radius: 18px;
+  margin: 2rem 0;
+  color: white;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.quote-author {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-family: 'Crimson Text', serif;
+  font-style: normal;
+  font-weight: 600;
 }
 
 .modal {
   display: none;
   position: fixed;
-  inset: 0;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.5);
 }
 
 .modal-content {
   background: white;
   margin: 10% auto;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   max-width: 500px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  font-family: 'Playfair Display', serif;
+  color: #6a4c93;
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.modal-content input[type="email"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e4d7ec;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  margin: 1.2rem 0;
+  box-sizing: border-box;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #6a4c93;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -164,16 +400,19 @@ button:hover {
 
 <div id="emailModal" class="modal">
   <div class="modal-content">
-    <h3>Email Your Journey</h3>
-    <input type="email" id="emailInput" placeholder="you@example.com" />
-    <button onclick="sendEmail()">Send</button>
-    <button onclick="closeEmailModal()">Cancel</button>
+    <span class="close-modal" onclick="closeEmailModal()">&times;</span>
+    <h3>📧 Email Your Journey</h3>
+    <p style="font-family: 'Crimson Text', serif; font-size: 1.1rem; font-style: italic;">Enter your email address to receive your Future Self reflection:</p>
+    <input type="email" id="emailInput" placeholder="your.email@example.com">
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <button onclick="sendEmail()">Send to Email</button>
+      <button onclick="closeEmailModal()" style="background: #e4d7ec;">Cancel</button>
+    </div>
   </div>
 </div>
 
 <script>
 let currentStage = 0;
-
 let responses = JSON.parse(localStorage.getItem("futureSelfLO")) || {
   timeframe: 3,
   visualization: "",
@@ -186,77 +425,295 @@ let responses = JSON.parse(localStorage.getItem("futureSelfLO")) || {
 const stages = [
 {
   title: "Meet Your Future Self",
-  subtitle: "Life Orientation | Self-awareness",
+  subtitle: "Life Orientation • Self-awareness & Goal-setting",
   render: () => `
-    <img class="inspiration-image"
-      src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80"
-      onerror="this.style.display='none'">
-    <p>This activity helps you reflect on your future goals and choices.</p>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" 
+         alt="Beach sunset with person" 
+         class="inspiration-image">
+    
+    <div class="quote-overlay">
+      <div style="font-size: 1.8rem; line-height: 1.9;">
+        "There is peace in realizing that what God intends for you will happen in the right way."
+      </div>
+      <div class="quote-author">— Sarah Ghabrial</div>
+    </div>
+    
+    <div class="intro-text">
+      This guided reflection journey is designed to help you <em>envision your future self</em> and create a meaningful pathway forward. Research shows that <strong>future self-continuity</strong>—the ability to see your future self as connected to who you are today—leads to better decision-making, increased motivation, and more purposeful life choices.
+    </div>
+    
+    <div class="research-note">
+      <strong>Why This Matters:</strong> Studies in psychology demonstrate that when adolescents engage in structured future-self reflection, they show improved academic performance, better goal-setting abilities, and enhanced emotional wellbeing. <em>This isn't just imagination—it's a powerful tool for personal growth.</em>
+    </div>
+    
+    <div class="info-box">
+      <strong>This reflection supports key Life Orientation outcomes:</strong><br><br>
+      ✔ <strong>Self-awareness</strong> – Understanding who you are and who you want to become<br>
+      ✔ <strong>Personal responsibility</strong> – Taking ownership of your choices and growth<br>
+      ✔ <strong>Goal-setting & decision-making</strong> – Creating a clear, purposeful path forward<br>
+      ✔ <strong>Meaningful life choices</strong> – Aligning your actions with your deepest values
+    </div>
+    
+    <p style="color: #8d6fa3; font-style: italic; font-family: 'Crimson Text', serif; font-size: 1.1rem; text-align: center; margin-top: 2rem;">
+      Your responses are completely private and designed to support your unique journey.
+    </p>
   `
 },
 {
-  title: "Your Timeline",
-  subtitle: "Goal-setting",
+  title: "Your Timeline Ahead",
+  subtitle: "Envisioning the Future • Setting Your Timeframe",
   render: () => `
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" 
+         alt="Mountain landscape" 
+         class="inspiration-image">
+    
+    <div class="intro-text">
+      <em>Time is the canvas upon which we paint our dreams.</em> Research in goal-setting psychology shows that choosing a specific timeframe makes our future vision more concrete and actionable.
+    </div>
+    
+    <div class="timeline-viz">
+      <div class="timeline-line"></div>
+      <div class="timeline-point active">Now</div>
+      <div class="timeline-point" style="opacity: ${responses.timeframe >= 3 ? 1 : 0.3}">
+        ${Math.floor(responses.timeframe/2)}y
+      </div>
+      <div class="timeline-point" style="opacity: ${responses.timeframe >= 5 ? 1 : 0.3}">
+        ${responses.timeframe}y
+      </div>
+    </div>
+    
     <input type="range" min="1" max="10" value="${responses.timeframe}"
-      oninput="updateTimeframe(this.value)">
-    <p><strong>${responses.timeframe} years ahead</strong></p>
+      oninput="updateTimeframe(this.value)" style="cursor: pointer;">
+    
+    <p style="text-align:center;font-size:2.2rem;font-weight:700;color:#6a4c93;font-family:'Playfair Display',serif;margin:1rem 0;">
+      ${responses.timeframe} years
+    </p>
+    
+    <div class="elegant-prompt">
+      Imagine yourself ${responses.timeframe} years from now. What has changed? What have you accomplished? Who have you become?
+    </div>
+    
+    <div class="research-note">
+      <strong>The Science:</strong> Psychologist Hal Hershfield's research shows that people who can vividly imagine their future selves make better long-term decisions. <em>The clearer your vision, the more likely you are to take steps toward it today.</em>
+    </div>
   `
 },
 {
   title: "Future Vision",
-  subtitle: "Self-concept",
+  subtitle: "Who Will You Become? • Painting Your Future Self",
   render: () => `
-    <textarea oninput="save('visualization', this.value)"
-      placeholder="Describe your future...">${responses.visualization}</textarea>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" 
+         alt="Freedom and possibility" 
+         class="inspiration-image">
+    
+    <div class="section-header">Close your eyes for a moment...</div>
+    
+    <div class="elegant-prompt">
+      Imagine yourself ${responses.timeframe} years from now. See yourself clearly—where you are, what you're doing, who you're with. <em>Now describe this vision in vivid detail:</em>
+    </div>
+    
+    <textarea placeholder="Paint a picture with your words... Where do you live? What do you do each day? What achievements are you proud of? What relationships matter most? What kind of person have you become?
+
+Example: I'm studying environmental science at university, living in a vibrant city. I volunteer at a community garden every weekend and have built meaningful friendships with people who share my values. I've developed confidence in public speaking and am known for my thoughtful perspectives..."
+      oninput="save('visualization', this.value)">${responses.visualization}</textarea>
+    
+    <div class="info-box">
+      💡 <strong>Consider including:</strong> Career or studies, living situation, relationships, personal achievements, character development, values you embody, impact you're making, daily routines, sources of joy
+    </div>
+    
+    <div class="research-note">
+      <strong>Why Visualization Works:</strong> Neuroscience research reveals that imagining future experiences activates the same brain regions as actually experiencing them. <em>By visualizing your future self, you're literally creating neural pathways that guide your decisions and behaviors.</em>
+    </div>
   `
 },
 {
-  title: "Strengths",
-  subtitle: "Personal resources",
+  title: "Strengths & Resources",
+  subtitle: "Your Inner & Outer Support • The Foundation of Growth",
   render: () => `
-    <textarea oninput="save('strengths', this.value)"
-      placeholder="What strengths helped you?">${responses.strengths}</textarea>
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" 
+         alt="Strength and resilience" 
+         class="inspiration-image">
+    
+    <div class="section-header">What helped you get there?</div>
+    
+    <div class="elegant-prompt">
+      Think about the <em>strengths within you</em> and the <em>support around you</em> that enabled this transformation. What qualities, skills, people, and opportunities played a role?
+    </div>
+    
+    <textarea placeholder="Reflect deeply on your resources...
+
+Example: My determination and resilience carried me through difficult times. My family's unwavering support gave me confidence. Time management skills I developed helped me balance everything. My mentor at school believed in me when I doubted myself. My faith and values kept me grounded. Access to education opened doors I didn't know existed..."
+      oninput="save('strengths', this.value)">${responses.strengths}</textarea>
+    
+    <div class="info-box">
+      💡 <strong>Explore different types of resources:</strong><br>
+      • <strong>Personal qualities:</strong> determination, creativity, empathy, resilience<br>
+      • <strong>Skills & abilities:</strong> communication, problem-solving, leadership, technical skills<br>
+      • <strong>Relationships:</strong> family, friends, mentors, teachers, community<br>
+      • <strong>Values & beliefs:</strong> faith, integrity, purpose, compassion<br>
+      • <strong>Opportunities:</strong> education, experiences, networks, resources
+    </div>
+    
+    <div class="research-note">
+      <strong>Asset-Based Thinking:</strong> Research in positive psychology shows that identifying and leveraging your strengths leads to greater success than focusing solely on weaknesses. <em>You already have so much within and around you—recognizing these assets empowers you to build upon them.</em>
+    </div>
   `
 },
 {
-  title: "Challenges",
-  subtitle: "Resilience",
+  title: "Challenges & Growth",
+  subtitle: "The Obstacles You Overcame • Resilience & Learning",
   render: () => `
-    <textarea oninput="save('obstacles', this.value)"
-      placeholder="What challenges did you overcome?">${responses.obstacles}</textarea>
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e" 
+         alt="Overcoming challenges" 
+         class="inspiration-image">
+    
+    <div class="section-header">Every journey has its challenges...</div>
+    
+    <div class="elegant-prompt">
+      <em>Growth doesn't happen in comfort zones.</em> What obstacles did you face along the way? More importantly, how did you overcome them? What did these challenges teach you?
+    </div>
+    
+    <textarea placeholder="Be honest about the difficulties and proud of how you handled them...
+
+Example: I struggled with severe exam anxiety that affected my performance. I learned breathing techniques and worked with a counselor to develop coping strategies. I faced peer pressure to make choices that didn't align with my values, but I found the courage to stay true to myself. Self-doubt crept in often, but I learned to challenge negative thoughts and seek support from trusted friends and mentors..."
+      oninput="save('obstacles', this.value)">${responses.obstacles}</textarea>
+    
+    <div class="info-box">
+      💡 <strong>Reflect on:</strong><br>
+      • Academic or personal setbacks you overcame<br>
+      • Moments of self-doubt and how you persevered<br>
+      • Difficult decisions you had to make<br>
+      • Relationships or situations that challenged you<br>
+      • Internal struggles (anxiety, fear, insecurity)<br>
+      • Lessons learned through difficulty
+    </div>
+    
+    <div class="research-note">
+      <strong>The Power of Resilience:</strong> Research on post-traumatic growth shows that overcoming challenges often leads to profound personal development. <em>Your struggles aren't signs of weakness—they're opportunities for strength, wisdom, and character development.</em>
+    </div>
   `
 },
 {
-  title: "Letter to Future Self",
-  subtitle: "Responsibility",
+  title: "Letter to the Future",
+  subtitle: "A Message to Your Future Self • Hope & Intention",
   render: () => `
-    <textarea oninput="save('letterToFuture', this.value)"
-      placeholder="Dear Future Me...">${responses.letterToFuture}</textarea>
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b" 
+         alt="Connection and conversation" 
+         class="inspiration-image">
+    
+    <div class="section-header">What would you like to tell your future self?</div>
+    
+    <div class="elegant-prompt">
+      Write a letter to the person you will become ${responses.timeframe} years from now. <em>Share your hopes, your dreams, your fears. Offer encouragement. Express what matters most to you right now.</em>
+    </div>
+    
+    <textarea placeholder="Dear Future Me,
+
+I'm writing to you from ${new Date().getFullYear()}, and I have so much hope for who you've become...
+
+I hope you're proud of the journey we've taken together. Remember the dreams we have today—the desire to make a difference, to stay true to our values, to build meaningful relationships...
+
+Please don't forget...
+
+Stay true to...
+
+With hope and determination,
+Your younger self"
+      oninput="save('letterToFuture', this.value)" style="min-height: 180px;">${responses.letterToFuture}</textarea>
+    
+    <div class="research-note">
+      <strong>Why Letters Matter:</strong> Studies show that letter-writing to one's future self increases commitment to goals and creates a psychological contract with your future identity. <em>This isn't just reflection—it's a promise to yourself.</em>
+    </div>
   `
 },
 {
   title: "Reply from the Future",
-  subtitle: "Reflection",
+  subtitle: "Wisdom from Who You'll Become • Guidance & Perspective",
   render: () => `
-    <textarea oninput="save('letterFromFuture', this.value)"
-      placeholder="Dear Past Me...">${responses.letterFromFuture}</textarea>
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b" 
+         alt="Wisdom and guidance" 
+         class="inspiration-image">
+    
+    <div class="section-header">Now imagine your future self writes back...</div>
+    
+    <div class="elegant-prompt">
+      <em>Your future self has lived through the experiences ahead.</em> What wisdom would they offer? What advice would they give to the person you are today? What perspective have they gained?
+    </div>
+    
+    <textarea placeholder="Dear Past Me,
+
+Thank you for believing in me and for not giving up, even when things got hard...
+
+Here's what I've learned along the way that I wish I could tell you now...
+
+Those worries you have today? Here's what I know about them now...
+
+Trust yourself. You're stronger than you think...
+
+The journey was worth it because...
+
+With gratitude and wisdom,
+Your future self"
+      oninput="save('letterFromFuture', this.value)" style="min-height: 180px;">${responses.letterFromFuture}</textarea>
+    
+    <div class="research-note">
+      <strong>Perspective-Taking:</strong> Psychological research on "temporal distancing" shows that imagining advice from your future self helps reduce anxiety and improves decision-making. <em>Your future self has wisdom to offer—listen to that inner voice.</em>
+    </div>
   `
 },
 {
-  title: "Your Future Map",
-  subtitle: "Integration",
+  title: "Your Integrated Future Map",
+  subtitle: "Bringing It All Together • Reflection & Meaning",
   render: () => `
+    <img src="https://images.unsplash.com/photo-1519286492618-663a9241d4dc" 
+         alt="Night sky with moon and stars" 
+         class="inspiration-image">
+    
+    <div class="intro-text" style="text-align: center; font-size: 1.3rem;">
+      <em>You've created something beautiful—a vision of who you're becoming.</em>
+    </div>
+    
     <div class="mindmap">
-      <div class="center-node">Future Me</div>
-      <div class="node"><strong>Vision</strong><br>${responses.visualization}</div>
-      <div class="node"><strong>Strengths</strong><br>${responses.strengths}</div>
-      <div class="node"><strong>Growth</strong><br>${responses.obstacles}</div>
-      <div class="node"><strong>Guidance</strong><br>${responses.letterFromFuture}</div>
+      <div class="center-node">✨ Future Me in ${responses.timeframe} Years</div>
+      <div class="node">
+        <strong>🎯 My Vision</strong>
+        ${responses.visualization || "Complete your vision to see it reflected here"}
+      </div>
+      <div class="node">
+        <strong>💪 My Strengths</strong>
+        ${responses.strengths || "Complete your strengths to see them reflected here"}
+      </div>
+      <div class="node">
+        <strong>🌱 My Growth</strong>
+        ${responses.obstacles || "Complete your challenges to see them reflected here"}
+      </div>
+      <div class="node">
+        <strong>💡 My Wisdom</strong>
+        ${responses.letterFromFuture || "Complete your letter to see it reflected here"}
+      </div>
     </div>
 
-    <button onclick="downloadJourney()">Download</button>
-    <button onclick="openEmailModal()">Email</button>
+    <div class="info-box" style="margin-top:2.5rem;">
+      <strong>✨ Personal Insight Based on Numerology</strong><br><br>
+      <em style="font-family: 'Crimson Text', serif; font-size: 1.05rem;">
+        Enter your date of birth below for a personalized reflection that connects your unique life path with your Life Orientation journey. This insight is based on numerology principles that have guided self-reflection for centuries.
+      </em>
+      <input type="date" onchange="generateInsight(this.value)" style="margin-top:1rem; font-size: 1.05rem; padding: 0.8rem;">
+      <div id="insightBox"></div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;">
+      <button onclick="downloadJourney()">📥 Download My Journey</button>
+      <button onclick="openEmailModal()">📧 Email My Journey</button>
+      <button onclick="reset()" style="background: #e4d7ec;">🔄 Start Fresh</button>
+    </div>
+    
+    <div style="margin-top: 2rem; padding: 1.5rem; background: #f7effb; border-radius: 12px; text-align: center;">
+      <p style="font-family: 'Crimson Text', serif; font-size: 1.1rem; font-style: italic; color: #6a4c93; margin: 0;">
+        "The future belongs to those who believe in the beauty of their dreams."
+      </p>
+      <p style="font-size: 0.95rem; color: #8d6fa3; margin-top: 0.5rem;">— Eleanor Roosevelt</p>
+    </div>
   `
 }
 ];
@@ -266,52 +723,278 @@ function render() {
   document.getElementById("stageTitle").innerText = stage.title;
   document.getElementById("stageSubtitle").innerText = stage.subtitle;
   document.getElementById("stageContent").innerHTML = stage.render();
-  document.getElementById("progressFill").style.width =
-    ((currentStage + 1) / stages.length) * 100 + "%";
+  document.getElementById("progressFill").style.width = `${((currentStage + 1) / stages.length) * 100}%`;
   renderButtons();
 }
 
 function renderButtons() {
   let html = "";
-  if (currentStage > 0) html += `<button onclick="prev()">Back</button>`;
-  if (currentStage < stages.length - 1) html += `<button onclick="next()">Continue</button>`;
+  if (currentStage > 0) html += `<button onclick="prev()">⬅ Back</button>`;
+  if (currentStage < stages.length - 1) html += `<button onclick="next()">Continue ➡</button>`;
   document.getElementById("buttons").innerHTML = html;
 }
 
-function next() { currentStage++; render(); }
-function prev() { currentStage--; render(); }
+function next() { 
+  currentStage++; 
+  render();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function prev() { 
+  currentStage--; 
+  render();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 
 function save(key, value) {
   responses[key] = value;
   localStorage.setItem("futureSelfLO", JSON.stringify(responses));
 }
 
-function updateTimeframe(v) { save("timeframe", v); render(); }
+function updateTimeframe(val) {
+  save("timeframe", val);
+  render();
+}
+
+function generateInsight(dateStr) {
+  if (!dateStr) return;
+  
+  const digits = dateStr.replaceAll("-", "").split("").map(Number);
+  let sum = digits.reduce((a, b) => a + b, 0);
+  
+  while (sum > 9 && ![11, 22, 33].includes(sum)) {
+    sum = sum.toString().split("").reduce((a, b) => a + parseInt(b), 0);
+  }
+  
+  const lifePaths = {
+    1: {
+      trait: "Initiative and Leadership",
+      strength: "You're a natural leader who takes initiative",
+      careers: "Entrepreneurship, Engineering, Management, Mathematics",
+      lo: "Your strength in personal responsibility and decision-making serves you well"
+    },
+    2: {
+      trait: "Cooperation and Harmony",
+      strength: "You value connection and work well with others",
+      careers: "Teaching, Counselling, Social Work, Human Resources",
+      lo: "Your ability to build relationships supports collaborative success"
+    },
+    3: {
+      trait: "Creativity and Expression",
+      strength: "Creativity and communication are your gifts",
+      careers: "Media, Arts, Marketing, Communications, Writing",
+      lo: "Your self-expression helps you connect authentically with your goals"
+    },
+    4: {
+      trait: "Structure and Reliability",
+      strength: "You appreciate structure and build solid foundations",
+      careers: "Accounting, Engineering, Project Management, Architecture",
+      lo: "Your discipline and planning create sustainable pathways to success"
+    },
+    5: {
+      trait: "Adaptability and Curiosity",
+      strength: "Adaptability and curiosity guide your exploration",
+      careers: "Tourism, Sales, Journalism, Event Management",
+      lo: "Your flexibility helps you navigate change and seize opportunities"
+    },
+    6: {
+      trait: "Care and Responsibility",
+      strength: "Care and responsibility are central to who you are",
+      careers: "Healthcare, Social Work, Teaching, Community Development",
+      lo: "Your nurturing nature supports both your growth and others'"
+    },
+    7: {
+      trait: "Reflection and Depth",
+      strength: "Reflection and depth support your understanding",
+      careers: "Research, IT, Psychology, Analytics, Science",
+      lo: "Your thoughtful approach leads to meaningful insights and wisdom"
+    },
+    8: {
+      trait: "Achievement and Impact",
+      strength: "Achievement and creating impact motivate you",
+      careers: "Business, Law, Finance, Leadership roles",
+      lo: "Your ambition drives you toward significant accomplishments"
+    },
+    9: {
+      trait: "Meaning and Contribution",
+      strength: "Meaning and contribution matter deeply to you",
+      careers: "NGO work, Environmental science, Activism, Education",
+      lo: "Your desire to make a difference guides purposeful choices"
+    },
+    11: {
+      trait: "Vision and Inspiration (Master Number)",
+      strength: "You have heightened intuition and visionary potential",
+      careers: "Innovation, Leadership, Inspirational roles, Technology",
+      lo: "Your insight can inspire others and lead transformative change"
+    },
+    22: {
+      trait: "Master Builder (Master Number)",
+      strength: "You have the potential to build lasting legacies",
+      careers: "Architecture, Policy-making, Large-scale projects, Urban planning",
+      lo: "Your ability to turn vision into reality creates meaningful impact"
+    },
+    33: {
+      trait: "Master Teacher (Master Number)",
+      strength: "You have exceptional capacity for nurturing and teaching",
+      careers: "Education reform, Counselling, Humanitarian work",
+      lo: "Your gift for uplifting others creates ripples of positive change"
+    }
+  };
+  
+  const path = lifePaths[sum];
+  const masterNote = [11, 22, 33].includes(sum) ? 
+    '<p style="color:#6a4c93;font-weight:700;font-size:1.1rem;margin-top:1rem;">✨ You have a Master Number—this suggests heightened potential and responsibility in your life path.</p>' : '';
+  
+  document.getElementById("insightBox").innerHTML = `
+    <div style="animation: slideIn 0.5s ease; margin-top: 1.5rem;">
+      <div class="life-path-badge">Life Path Number ${sum}</div>
+      ${masterNote}
+      <p style="font-size:1.15rem;margin-top:1rem;"><strong style="color:#6a4c93;">${path.trait}</strong></p>
+      <p style="font-family:'Crimson Text',serif;font-size:1.1rem;font-style:italic;line-height:1.8;">${path.strength}</p>
+      <p style="margin-top:1rem;"><strong style="color:#6a4c93;">Aligned Career Paths:</strong> <span style="font-family:'Crimson Text',serif;font-style:italic;">${path.careers}</span></p>
+      <p style="margin-top:1rem;"><strong style="color:#6a4c93;">Life Orientation Connection:</strong> <span style="font-family:'Crimson Text',serif;font-style:italic;">${path.lo}</span></p>
+      <div style="margin-top:1.5rem;padding:1.2rem;background:#f2e9f7;border-radius:10px;border-left:4px solid #9f86c0;">
+        <strong style="color:#6a4c93;font-size:1.05rem;">Personal Reflection Question:</strong>
+        <p style="font-family:'Crimson Text',serif;font-style:italic;font-size:1.05rem;margin-top:0.5rem;line-height:1.8;">
+          How does this life path resonate with your future vision above? What aspects feel authentically true to who you are and who you're becoming?
+        </p>
+      </div>
+    </div>
+  `;
+}
 
 function downloadJourney() {
-  const text = JSON.stringify(responses, null, 2);
-  const blob = new Blob([text], {type:"text/plain"});
+  const text = `
+═══════════════════════════════════════════════════════
+        MY FUTURE SELF JOURNEY
+        Life Orientation Reflection
+═══════════════════════════════════════════════════════
+
+Date: ${new Date().toLocaleDateString('en-ZA', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  })}
+
+───────────────────────────────────────────────────────
+TIMELINE: ${responses.timeframe} Years Ahead
+───────────────────────────────────────────────────────
+
+───────────────────────────────────────────────────────
+🎯 FUTURE VISION
+───────────────────────────────────────────────────────
+${responses.visualization || "(Not completed)"}
+
+───────────────────────────────────────────────────────
+💪 STRENGTHS & RESOURCES
+───────────────────────────────────────────────────────
+${responses.strengths || "(Not completed)"}
+
+───────────────────────────────────────────────────────
+🌱 CHALLENGES & GROWTH
+───────────────────────────────────────────────────────
+${responses.obstacles || "(Not completed)"}
+
+───────────────────────────────────────────────────────
+✉️ LETTER TO MY FUTURE SELF
+───────────────────────────────────────────────────────
+${responses.letterToFuture || "(Not completed)"}
+
+───────────────────────────────────────────────────────
+💌 REPLY FROM MY FUTURE SELF
+───────────────────────────────────────────────────────
+${responses.letterFromFuture || "(Not completed)"}
+
+═══════════════════════════════════════════════════════
+
+"There is peace in realizing that what God intends for 
+you will happen in the right way." — Sarah Ghabrial
+
+"The future belongs to those who believe in the beauty 
+of their dreams." — Eleanor Roosevelt
+
+═══════════════════════════════════════════════════════
+  `.trim();
+  
+  const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "Future_Self_Journey.txt";
+  a.href = url;
+  a.download = `Future_Self_Journey_${new Date().toISOString().split('T')[0]}.txt`;
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  alert("✅ Your journey has been downloaded!");
 }
 
 function openEmailModal() {
   document.getElementById("emailModal").style.display = "block";
 }
+
 function closeEmailModal() {
   document.getElementById("emailModal").style.display = "none";
 }
+
 function sendEmail() {
   const email = document.getElementById("emailInput").value;
-  if (!email.includes("@")) { alert("Enter valid email"); return; }
-  window.location.href = `mailto:${email}?subject=My Future Self Journey`;
+  if (!email || !email.includes('@')) {
+    alert("⚠️ Please enter a valid email address.");
+    return;
+  }
+  
+  const subject = encodeURIComponent("My Future Self Journey - Life Orientation Reflection");
+  const body = encodeURIComponent(`MY FUTURE SELF JOURNEY
+Life Orientation Reflection
+Date: ${new Date().toLocaleDateString()}
+
+═══════════════════════════════════════════════════════
+
+TIMELINE: ${responses.timeframe} Years Ahead
+
+🎯 FUTURE VISION
+${responses.visualization || "(Not completed)"}
+
+💪 STRENGTHS & RESOURCES
+${responses.strengths || "(Not completed)"}
+
+🌱 CHALLENGES & GROWTH
+${responses.obstacles || "(Not completed)"}
+
+✉️ LETTER TO MY FUTURE SELF
+${responses.letterToFuture || "(Not completed)"}
+
+💌 REPLY FROM MY FUTURE SELF
+${responses.letterFromFuture || "(Not completed)"}
+
+═══════════════════════════════════════════════════════
+
+"There is peace in realizing that what God intends for you 
+will happen in the right way." — Sarah Ghabrial
+  `);
+  
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   closeEmailModal();
+  alert("✅ Opening your email client...\n\nIf it doesn't open automatically, you can copy your journey using the Download button instead.");
+}
+
+function reset() {
+  if (confirm("Are you sure you want to start fresh? This will clear all your responses.")) {
+    localStorage.removeItem("futureSelfLO");
+    responses = {
+      timeframe: 3,
+      visualization: "",
+      strengths: "",
+      obstacles: "",
+      letterToFuture: "",
+      letterFromFuture: ""
+    };
+    currentStage = 0;
+    render();
+  }
 }
 
 render();
 </script>
-
 </body>
 </html>
